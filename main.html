@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Amicable Numbers</title>
+<script language="javascript">
+
+function AreAmicable()
+{
+	x = parseInt(document.getElementById("number1").value);
+	y = parseInt(document.getElementById("number2").value);
+	var xDivisors = [];
+	var yDivisors = [];
+	xDivisors.push(1)
+	yDivisors.push(1)
+	xSum = 0;
+	ySum = 0;
+	halfx = x/2;
+	halfy = y/2;	
+
+	for (i = 2; i < halfx+1; i++){
+
+		if (isFactor(i,x)){
+			xSum += i;
+			xDivisors.push(i)
+		}	
+	}
+	xSum = xSum + 1;
+
+	for (j = 2; j < halfy+1; j++){
+
+		if (isFactor(j,y)){
+			ySum += j;
+			yDivisors.push(j)
+		}	
+	}
+	ySum = ySum + 1;
+
+	
+	if (xSum = y && ySum == x){
+		b = document.getElementById ("btn");
+		b.onclick = function() {
+			document.getElementById("here").innerHTML="The numbers: " + x + " and " + y + " are amicable";
+		}
+	}
+	else{
+		b = document.getElementById ("btn");
+		b.onclick = function() {
+			document.getElementById("here").innerHTML="The numbers: " + x + " and " + y + " are not amicable";
+		}
+	}
+	
+	
+	alert("These the factors of " + x + ": " + xDivisors + "\n" + "These the factors of " + y + ": " + yDivisors);
+
+}
+
+function isFactor(factor, y)
+{
+	if (y%factor == 0)
+		return true
+	else 
+		return false
+}
+</script>
+</head>
+
+<body>
+	<form>
+	Enter the first number:  <input type="number" id="number1">
+	Enter the second number:  <input type="number" id="number2">
+	<br>
+	<input type= "button" value = "Are they Amicable?" onclick="AreAmicable()" id = "btn">
+	<div id = "here"> &nbsp; </div> 
+	</form>
+</body>
+</html>
